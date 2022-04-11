@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="icon" href="{% static 'assets/img/citu-logo.png' %}" type="image/gif"/>
+    <title>Sign Up</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/user_register.css' %}" /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/user_register.css' %}" />
+    <style>
+      html{ zoom: 75%; }
+      td.tble1{ text-align: left; }
+      td.tble2{ padding-left: 25px; }
+      p.p1{
+        padding-left: 60px;
+        color:white;
+        font-size: 135%;
+        font-weight: bold;
+      }
+      p.p1 a{
+        color: gold;
+        text-shadow: 2px 3px maroon;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <img class="wave" src="{% static 'assets/img/wave.png' %}">
+    <img class="cit-bg" src="{% static 'assets/img/citu-background.jpeg' %}">
+    
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <h4>It's free and only takes a minute</h4>
+
+      <center>
+        <form class="form" method="POST" action="">
+          {% csrf_token %}
+          
+          <table>
+            <tbody>
+              <tr>
+                <td class="tble1">ID No. </td>
+                <td class="tble2"> {{form.username}} </td>
+              </tr>
+              <tr>
+                <td class="tble1">Email </td>
+                <td class="tble2"> {{form.email}} </td>
+              </tr>
+              <tr>
+                <td class="tble1">Password </td>
+                <td class="tble2"> {{form.password1}} </td>
+              </tr>
+              <tr>
+                <td class="tble1">Confirm Password </td>
+                <td class="tble2"> {{form.password2}} </td>
+              </tr>
+              <tr>
+                <td class="tble1">First Name </td>
+                <td class="tble2"> {{form.first_name}} </td>
+              </tr>
+              <tr>
+                <td class="tble1">Last Name </td>
+                <td class="tble2"> {{form.last_name}} </td>
+              </tr>
+            </tbody>
+          </table>
+
+          
+        
+          <!-- <label>ID No.</label>
+          {{form.username}}
+  
+          <label>Email</label>
+          {{form.email}}
+        
+          <label>Password</label>
+          {{form.password1}}
+  
+          <label>Confirm Password</label>
+          {{form.password2}}
+  
+          <label>First Name</label>
+          {{form.first_name}}
+  
+          <label>Last Name</label>
+          {{form.last_name}} -->
+
+          <!--
+            <input type="text" placeholder="" />
+            <input type="email" placeholder="" />
+            <input type="password" placeholder="" />
+            <input type="password" placeholder="" />
+            <input type="text" placeholder="" />
+            <input type="text" placeholder="" /> -->
+       <p>
+        <button class="btn" type="Submit" value="Register Account">Register</button>
+      </p>
+  
+        </form>
+        
+        <p></p>
+      </center>
+
+
+      {{form.errors}}
+      <p style="color: black; font-size: 80%">
+        By clicking the Sign Up button, you agree to our <br />
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+      </p>
+      <br>
+    </div>
+    <p style="color: white" class="p1">
+      Already have an account? <a href="{% url 'loginpage'%}">Login here</a>
+    </p>
+  </body>
+</html>

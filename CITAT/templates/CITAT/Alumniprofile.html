@@ -1,0 +1,341 @@
+<!doctype html>
+{% extends 'CITAT/navbar.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+		
+		<!-- ChartJS  CDN-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+		<link rel="stylesheet" href="{% static 'css/alumniprofile.css' %}"/>
+
+		<title>Alumni Profile</title>
+
+		<style>
+			.profile-pic{
+				width: 200px;
+				height: 200px;
+				margin: 0 auto;
+				border-radius: 50%;
+			}
+
+		</style>
+	</head>
+	<body style="background: url('/static/assets/img/citu-background.jpeg') no-repeat; background-size: cover;">
+		<button class="btn-print" onclick="window.print();">Print</button>
+		<br>
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Profile:</h5>
+					<hr>
+					<img class="profile-pic" src="{{alumni.profile_pic.url}}">
+					<br>
+					<table class="tble">
+						<tr>
+							<th> User Profile Information </th>
+						</tr>
+					</table>
+					<hr>
+					<table class="tble">
+						<tr>
+							<td>Firstname: </td>
+							<td> {{alumni.firstname}} </td>
+						</tr>
+						<tr>
+							<td>Lastname: </td>
+							<td> {{alumni.lastname}} </td>
+						</tr>
+						<tr>
+							<td>Age: </td>
+							<td> {{alumni.Age}} </td>
+						</tr>
+						<tr>
+							<td>Gender: </td>
+							<td> {{alumni.Gender }} </td>
+						</tr>
+						<tr>
+							<td>Course: </td>
+							<td> {{alumni.Course }} </td>
+						</tr>
+						<tr>
+							<td>Address: </td>
+							<td> {{alumni.address }} </td>
+						</tr>
+						<tr>
+							<td>Zipcode: </td>
+							<td> {{alumni.zipcode }} </td>
+						</tr>
+						<tr>
+							<td>Country: </td>
+							<td> {{alumni.Country }} </td>
+						</tr>
+						<tr>
+							<td>Religion: </td>
+							<td> {{alumni.Religion }} </td>
+						</tr>
+						<tr>
+							<td>Citizenship: </td>
+							<td> {{alumni.Citizenship }} </td>
+						</tr>
+						<tr>
+							<td>Date of Birth: </td>
+							<td> {{alumni.Date_of_Birth }} </td>
+						</tr>
+						<tr>
+							<td>Place of Birth: </td>
+							<td> {{alumni.Place_of_Birth }} </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="col-md">
+				<div class="card card-body">
+					<table class="tble">
+						<tr>
+							<th> Contact Information </th>
+						</tr>
+					</table>
+					<hr>
+					<table class="tble">
+						<tr>
+							<td>Email: </td>
+							<td> {{alumni.email}} </td>
+						</tr>
+						<tr>
+							<td>Phone No.: </td>
+							<td> {{alumni.phone}} </td>
+						</tr>
+						<tr>
+							<td>Telephone No.: </td>
+							<td> {{alumni.Telephone}} </td>
+						</tr>
+					</table>
+					<!-- <h5>Contact Information</h5>
+					<hr>
+					<p>Email: {{alumni.email}}</p>
+					<p>Phone: {{alumni.phone }}</p>
+					<p>Telephone: {{alumni.Telephone }}</p> -->
+				</div>
+			</div>
+
+			<div class="col-md">
+				<div class="card card-body">
+					<table class="tble">
+						<tr>
+							<th> Incase of Emergency </th>
+						</tr>
+					</table>
+					<hr>
+					<table class="tble">
+						<tr>
+							<td>Name of Contact: </td>
+							<td> {{alumni.nameofemergency}} ({{alumni.relation}}) </td>
+						</tr>
+						<tr>
+							<td>Contact Number: </td>
+							<td> {{alumni.contactnumber }} </td>
+						</tr>
+						<tr>
+							<td>Address: </td>
+							<td> {{alumni.address2 }} </td>
+						</tr>
+					</table>
+					<!-- <h5>Incase of Emergency</h5>
+					<hr>
+					<p>Name of Contact: {{alumni.nameofemergency}} ({{alumni.relation}})</p>
+					<p>Contact Number: {{alumni.contactnumber }}</p>
+					<p>Address: {{alumni.address2 }}</p> -->
+				</div>
+			</div>	
+
+
+		</div>
+
+		<br>
+		<br>
+
+<!-- 		<div class="row">
+		<div class="col-md-4">
+				<div class="card card-body">
+					<table class="tble">
+						<tr>
+							<th> User Profile Information </th>
+						</tr>
+					</table>
+					<hr>
+					<table class="tble">
+						<tr>
+							<td>Firstname: </td>
+							<td> {{alumni.firstname}} </td>
+						</tr>
+						<tr>
+							<td>Lastname: </td>
+							<td> {{alumni.lastname}} </td>
+						</tr>
+						<tr>
+							<td>Gender: </td>
+							<td> {{alumni.Gender }} </td>
+						</tr>
+						<tr>
+							<td>Course: </td>
+							<td> {{alumni.Course }} </td>
+						</tr>
+						<tr>
+							<td>Address: </td>
+							<td> {{alumni.address }} </td>
+						</tr>
+						<tr>
+							<td>Zipcode: </td>
+							<td> {{alumni.zipcode }} </td>
+						</tr>
+						<tr>
+							<td>Country: </td>
+							<td> {{alumni.Country }} </td>
+						</tr>
+						<tr>
+							<td>Religion: </td>
+							<td> {{alumni.Religion }} </td>
+						</tr>
+						<tr>
+							<td>Citizenship: </td>
+							<td> {{alumni.Citizenship }} </td>
+						</tr>
+						<tr>
+							<td>Date of Birth: </td>
+							<td> {{alumni.Date_of_Birth }} </td>
+						</tr>
+						<tr>
+							<td>Place of Birth: </td>
+							<td> {{alumni.Place_of_Birth }} </td>
+						</tr>
+					</table> -->
+					<!-- <h5>User Profile Information</h5>
+					<hr>
+					<p>Firstname: {{alumni.firstname}}</p>
+					<p>Lastname: {{alumni.lastname }}</p>
+					<p>Gender: {{alumni.Gender }}</p>
+					<p>Course: {{alumni.Course }}</p>
+					<p>Address: {{alumni.address }}</p>
+					<p>Zipcode: {{alumni.zipcode }}</p>
+					<p>Country: {{alumni.Country }}</p>
+					<p>Religion: {{alumni.Religion }}</p>
+					<p>Citizenship: {{alumni.Citizenship }}</p>
+					<p>Date of Birth: {{alumni.Date_of_Birth }}</p>
+					<p>Place of Birth: {{alumni.Place_of_Birth }}</p>
+				</div>
+			</div>
+
+
+
+ -->
+			<!-- <div class="col-md">
+				<div class="card card-body">
+					<canvas id="myChart" width="300" height="130"></canvas>
+						<script>
+						const ctx = document.getElementById('myChart').getContext('2d');
+						const myChart = new Chart(ctx, {
+						    type: 'bar',
+						    data: {
+						        labels: [{%for Employed in employed%} '{{Employed.Company_name}}', {%endfor%}],
+						        datasets: [{
+						            label: 'Year Started',
+						            data: [{%for Employed in employed%} '{{Employed.Year_started}}', {%endfor%}],
+						            backgroundColor: [
+						                'rgba(255, 99, 132, 1)',
+						                'rgba(54, 162, 235, 1)',
+						                'rgba(255, 206, 86, 1)',
+						                'rgba(75, 192, 192, 1)',
+						                'rgba(153, 102, 255, 1)',
+						                'rgba(255, 159, 64, 1)'
+						            ],
+						            borderColor: [
+						                'rgba(255, 99, 132, 1)',
+						                'rgba(54, 162, 235, 1)',
+						                'rgba(255, 206, 86, 1)',
+						                'rgba(75, 192, 192, 1)',
+						                'rgba(153, 102, 255, 1)',
+						                'rgba(255, 159, 64, 1)'
+						            ],
+						            borderWidth: 1
+						        }]
+						    },
+						    options: {
+						        scales: {
+						            y: {
+						                beginAtZero: true
+						            }
+						        }
+						    }
+						});
+						</script>
+
+				</div>
+			</div> -->
+<!-- 		</div>
+		
+		<br>
+		<br> -->
+
+		<!-- <div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Company Details</h5>
+					
+					<table class="table table-sm">
+						<tr>
+							<th>Company Name</th>
+							<th>Company Address</th>
+							<th>Company Zipcode</th>
+							<th>Company Country</th>
+							<th>Company Contact Number</th>
+							<th>Company Email</th>
+							<th>Position</th>
+							<th>Income</th>
+							<th>Year Started</th>
+						</tr>
+				
+						{% for Employed in employed %}
+					
+						<tr>
+							<td>{{Employed.Company_name}}</td>
+							<td>{{Employed.Company_address}}</td>
+							<td>{{Employed.Company_zipcode}}</td>
+							<td>{{Employed.Company_country}}</td>
+							<td>{{Employed.Company_contact}}</td>
+							<td>{{Employed.Company_email}}</td>
+							<td>{{Employed.Position}}</td>
+							<td>{{Employed.Income}}</td>
+							<td>{{Employed.Year_started}}</td>
+
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div> -->
+
+		<br>
+		<br>
+
+		
+			
+		</div>
+
+	
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	</body>
+	{% endblock content %}
+</html>

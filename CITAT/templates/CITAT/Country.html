@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% extends 'CITAT/navbar.html' %}
+{% load static %}
+{% block content %}
+
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<title>CIT-U Alumni Tracker | Dashboard</title>
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+				<!-- ChartJS  CDN-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+	<style>
+    	#logo{
+
+    	}
+    	body{
+    		background-color: #ebeff5;
+    	}
+
+    	#job-post{
+    		background-color: #741e1e;
+    	}
+
+    	#partner-company{
+    		background-color: #741e1e;
+    	}
+
+    	#job-seekers{
+    		background-color: #741e1e;
+    	}
+    </style>
+	</head>
+	<body>
+		
+
+  		
+		<br>
+
+		<div class="row">
+			<div class="col">
+				<div class="card card-body">
+					<form method="get">
+						{{myFilter.form}}
+					<button class="btn btn-danger" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<h5>Alumni</h5>
+				<hr>
+				<div class="card card-body">
+					<a class="btn btn-danger btn-sm btn-block" href="">Alumni Info</a>
+					<table class="table table-sm">
+						<tr>
+							
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Country</th>
+							<th>Action</th>
+						</tr>
+				
+						{% for Alumni in alumni %}
+						
+						<tr>
+							
+							<td>{{Alumni.firstname}}</td>
+							<td>{{Alumni.lastname}}</td>
+							<td>{{Alumni.Country}}</td>
+							<td><a class = "btn btn-sm btn-danger" href="{% url 'alumni' Alumni.id %}">View</a></td>
+						</tr>
+				
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class=row>
+					<div class="col-md-4">
+				<div class="card card-body">
+					<canvas id="myChart" width="300" height="130"></canvas>
+						<script>
+						const ctx = document.getElementById('myChart').getContext('2d');
+						const myChart = new Chart(ctx, {
+						    type: 'pie',
+						    data: {
+						        labels: [{% for Alumni in alumni %} '{{Alumni.Country}}', {%endfor%}],
+						        datasets: [{
+						            label: 'Country',
+
+
+						            // data: [{{Philippines}}, {{AmericanSamoa}},],
+
+						            data: [{{Afghanistan}}, {{Albania}}, {{Algeria}}, {{AmericanSamoa}}, {{Andorra}}, {{Angola}}, {{Anguilla}}, {{AntiguaBarbuda}}, {{Argentina}}, {{Armenia}}, {{Aruba}}, {{Australia}}, {{Austria}}, {{Azerbaijan}}, {{Bahamas}}, {{Bahrain}}, 
+						            	{{Bangladesh}}, {{Barbados}}, {{Belarus}}, {{Belgium}}, {{Belize}}, {{Benin}}, {{Bermuda}}, {{Bhutan}}, {{Bolivia}}, {{Bonaire}}, {{BosniaHerzegovina}}, {{Botswana}}, {{Brazil}}, {{BritishIndianOceanTer}}, {{Brunei}}, {{Bulgaria}}, {{Cambodia}}, {{Cameroon}}, {{Canada}}, {{CanaryIslands}}, 
+						           		 {{CapeVerde}}, {{CaymanIslands}}, {{CentralAfricanRepublic}}, {{Chad}}, {{ChannelIslands}}, {{Chile}}, {{China}}, {{ChristmasIsland}}, {{CocosIsland}}, {{Colombia}}, {{Comoros}}, {{Congo}}, {{CookIslands}}, {{CostaRica}}, {{CoteDIvoire}}, {{Croatia}}, {{Cuba}}, {{Curacao}}, {{Cyprus}}, {{CzechRepublic}}, 
+						           		 {{Denmark}}, {{Djibouti}}, {{Dominica}}, {{DominicanRepublic}}, {{EastTimor}}, {{Ecuador}}, {{Egypt}}, {{ElSalvador}}, {{EquatorialGuinea}}, {{Eritrea}}, {{Estonia}}, {{Ethiopia}}, {{FalklandIslands}}, {{FaroeIslands}}, {{Fiji}}, {{Finland}}, {{France}}, {{FrenchGuiana}}, {{FrenchPolynesia}}, {{FrenchSouthernTer}}, 
+						            	{{Gabon}}, {{Gambia}}, {{Georgia}}, {{Germany}}, {{Ghana}}, {{Gibraltar}}, {{GreatBritain}}, {{Greece}}, {{Greenland}}, {{Grenada}}, {{Guadeloupe}}, {{Guam}}, {{Guatemala}}, {{Guinea}}, {{Guyana}}, {{Honduras}}, {{Haiti}}, {{HongKong}}, {{Hungary}}, {{Iceland}}, 
+						            {{Indonesia}}, {{India}}, {{Iran}}, {{Iraq}}, {{Ireland}}, {{IsleofMan}}, {{Israel}}, {{Italy}}, {{Jamaica}}, {{Japan}}, {{Jordan}}, {{Kazakhstan}}, {{Kenya}}, {{Kiribati}}, {{KoreaNorth}}, {{KoreaSouth}}, {{Kuwait}}, {{Kyrgyzstan}}, {{Laos}}, {{Latvia}}, 
+						            {{Lebanon}}, {{Lesotho}}, {{Liberia}}, {{Liechtenstein}}, {{Lithuania}}, {{Luxembourg}}, {{Macau}}, {{Macedonia}}, {{Madagascar}}, {{Malaysia}}, {{Malawi}}, {{Maldives}}, {{Mali}}, {{Malta}}, {{MarshallIslands}}, {{Martinique}}, {{Mauritania}}, {{Mauritius}}, {{Mayotte}}, {{Mexico}}, 
+						            {{Midway}}, {{Moldova}}, {{Monaco}}, {{Mongolia}}, {{Montserrat}}, {{Morocco}}, {{Mozambique}}, {{Myanmar}}, {{Nambia}}, {{Nauru}}, {{Nepal}}, {{NetherlandAntilles}}, {{NetherlandsHollandEurope}}, {{Nevis}}, {{NewCaledonia}}, {{NewZealand}}, {{Nicaragua}}, {{Niger}}, {{Nigeria}}, {{Niue}}, 
+						            {{NorfolkIsland}}, {{Norway}}, {{Oman}}, {{Pakistan}}, {{PalauIsland}}, {{Palestine}}, {{Panama}}, {{PapuaNewGuinea}}, {{Paraguay}}, {{Peru}}, {{Philippines}}, {{PitcairnIsland}}, {{Poland}}, {{Portugal}}, {{PuertoRico}}, {{Qatar}}, {{RepublicofMontenegro}}, {{RepublicofSerbia}}, {{Romania}}, {{Russia}}, 
+						            {{StBarthelemy}}, {{StEustatius}}, {{StHelena}}, {{StKittsNevis}}, {{StLucia}}, {{StMaarten}}, {{StPierreandMiquelon}}, {{StVincentandGrenadines}}, {{Saipan}}, {{Samoa}}, {{SamoaAmerican}}, {{SanMarino}}, {{SaoTomeandPrincipe}}, {{SaudiArabia}}, {{Senegal}}, {{Seychelles}}, {{SierraLeone}}, {{Singapore}}, {{Slovakia}}, {{Slovenia}}, 
+						            {{SolomonIslands}}, {{Somalia}}, {{SouthAfrica}}, {{Spain}}, {{SriLanka}}, {{Sudan}}, {{Suriname}}, {{Swaziland}}, {{Sweden}}, {{Switzerland}}, {{Syria}}, {{Tahiti}}, {{Taiwan}}, {{Tajikistan}}, {{Tanzania}}, {{Thailand}}, {{Togo}}, {{Tokelau}}, {{Tonga}}, {{TrinidadandTobago}}, 
+						            {{Tunisia}}, {{Turkey}}, {{Turkmenistan}}, {{TurksandCaicosIs}}, {{Tuvalu}}, {{Uganda}}, {{UnitedKingdom}}, {{Ukraine}}, {{UnitedArabEmirates}}, {{UnitedStatesofAmerica}}, {{Uruguay}}, {{Uzbekistan}}, {{Vanuatu}}, {{VaticanCityState}}, {{Venezuela}}, {{Vietnam}}, {{VirginIslandsBrit}}, {{VirginIslandsUSA}}, {{WakeIsland}}, {{WallisandFutanaIs}}, 
+
+						            {{Yemen}}, {{Zaire}}, {{Zambia}}, {{Zimbabwe}} ],
+
+						            // {{Yemen}}, {{Zaire}}, {{Zambia}}, {{Zimbabwe}},],
+
+
+						            backgroundColor: [
+						                'rgba(54, 162, 235, 1)',
+						                'rgba(255, 206, 86, 1)',
+						                'rgba(75, 192, 192, 1)',
+						                'rgba(153, 102, 255, 1)',
+						                'rgba(255, 159, 64, 1)'
+
+						            ],
+						            borderColor: [
+						                'rgba(255, 99, 132, 1)',
+						                'rgba(54, 162, 235, 1)',
+						                'rgba(255, 206, 86, 1)',
+						                'rgba(75, 192, 192, 1)',
+						                'rgba(153, 102, 255, 1)',
+						                'rgba(255, 159, 64, 1)'
+
+						            ],
+						            borderWidth: 1
+						        }]
+						    },
+						    options: {
+						        scales: {
+						            y: {
+						                beginAtZero: true
+						            }
+						        }
+						    }
+						});
+						</script>
+
+				</div>
+			</div>
+			<div class="col-md">
+				
+				<hr>
+				<div class="card card-body">
+					<a class="btn btn-danger btn-sm btn-block" href="{% url 'companygallery' %}">ALumni Company Info</a>
+					<table class="table table-sm">
+						<tr>
+							
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Company Name</th>
+							
+							
+						</tr>
+				
+						{% for Photos in photo %}
+						
+						<tr>
+							<td>{{Photos.firstname}}</td>
+							<td>{{Photos.lastname}}</td>
+							<td>{{Photos.category.name}}</td>
+						</tr>
+				
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+
+
+
+	
+
+
+
+	</body>
+	{% endblock content %}
+	</html>

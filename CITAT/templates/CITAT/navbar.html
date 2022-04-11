@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="{% static 'assets/img/citu-logo.png' %}" type="image/gif"/>
+    <title>CIT-U Alumni Tracker System</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+  <style>
+    .hello-msg{
+      font-size:  16px;
+      color:  #fff;
+      margin-right: 20px;
+    }
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    li a:hover{
+      text-decoration: none;
+      color: white;
+    }
+
+    .dropdown {
+      display: inline-block;
+      line-height: 0px;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 16px;  
+      border: none;
+      outline: none;
+      color: white;
+      
+      margin: 0;
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+      background-color: #1b9bff;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: maroon;
+      min-width: 190px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: gold;      
+      text-decoration: none;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background: linear-gradient(to right, #ffd700, yellow);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: inline-block;
+    }
+    footer{
+      background: gold;
+      color: maroon;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid #f1f1f1;
+      text-transform: uppercase;
+    }
+ 
+    
+  </style>
+    
+  </head>
+  <body>
+   <nav style="background: linear-gradient(to right, #ffd700, #800000);">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      
+      <label class="logo" style="font-weight: bold; color:#800000; text-shadow: 2px 3px white; text-align:left;">
+        <img class="bslogo" src="{% static 'assets/img/citu-ccs-logo.png' %}" alt="CIT-U CCS logo"/>
+        ALUMNI TRACKER
+      </label>
+
+      <ul style="font-weight: bold; color:white; text-shadow: 2px 3px #800000; text-align:left;">
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'dashboard' %}">DASHBOARD</a></li>
+        <li><a href="{% url 'event' %}">EVENTS</a></li>
+        <li><a href="{% url 'jobpage' %}">Jobs</a></li>
+        <li><a href="{% url 'about' %}">ABOUT US</a></li>
+        <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+        {% else %}
+
+        <li><a href="{% url 'Home' %}">HOME</a></li>
+        <li><a href="{% url 'userPage' %}">JOBS</a></li>
+        <li><a href="{% url 'eventsAlumni' %}">EVENTS</a></li>          
+        <li><a href="{% url 'account' %}">PROFILE</a></li>   
+        <li><a href="{% url 'about' %}">ABOUT US</a></li>
+        <li><a href="{% url 'contact' %}">CONTACT US</a></li>
+
+        <span class="hello-msg">Hello, {{request.user.first_name}}</span>
+        
+        {% endif %}
+       
+        <span><a class="hello-msg" href="{% url 'logout' %}">LOGOUT</a></span>
+
+         
+
+
+
+
+
+      </ul>
+
+
+    </nav>
+  
+    <hr>
+
+    <br> <br> <br>
+  
+    {% block content %}
+  
+    {% endblock content %}
+  
+    <hr>
+  
+    <br>
+    <br>
+    <br>
+  
+    <footer>CIT-U CCS Alumni Tracker System © UNKNOWN</footer>
+  </body>
+</html>

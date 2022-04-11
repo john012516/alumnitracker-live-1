@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="icon" href="{% static 'assets/img/citu-logo.png' %}" type="image/gif"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/loginstyle2.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      p.para-1{
+        padding-top: 90px;
+        padding-left: 105px;
+        color:white;
+        font-size: 135%;
+        font-weight: bold;
+      }
+      p.para-2{
+        padding-left: 105px;
+        color:white;
+        font-size: 135%;
+        font-weight: bold;
+      }
+      p.para-1 a, p.para-2 a{
+        color: gold;
+        text-shadow: 2px 3px maroon;
+      }
+    </style>
+
+  </head>
+  <body>
+    <img class="wave" src="{% static 'assets/img/wave.png' %}">
+ <!--    <img class="login-bg" src="{% static 'assets/img/cit.jpeg' %}"> -->
+    <img class="cit-bg" src="{% static 'assets/img/citu-background.jpeg' %}">
+
+    <div class="login-box">
+      <h1 class="login">Login</h1>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Input ID Number" />
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Input Password" />
+        <button class="btn" type="submit" value="Submit">Login
+        </button>
+      </form>
+    </div>
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      // {%for message in messages %}
+        // swal('{{message}}');
+        // <p id="messages">{{message}}</p>
+        swal({
+  
+          title: '{{message}}',
+          // icon: "warning",
+          dangerMode: true,
+        
+        })
+      //{%endfor%}
+    </script> 
+     
+    <p class="para-1">
+      Do not have an account? <a href="{% url 'registerpage'%}">Sign up here</a>
+    </p>
+    <p class="para-2">
+     Forgot Password? <a href="{% url 'reset_password'%}">Click here</a>
+    </p>
+  </body>
+</html>
