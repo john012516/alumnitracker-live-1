@@ -22,9 +22,26 @@
 		<style>
 			h2{
 				color: maroon;
-				text-shadow: 2px 3px gold;
+				text-shadow: 2px 1px gold;
 				font-weight: bold;
 			}
+			button {  
+				position: absolute;
+				top: 20%;
+	            left: 66%;
+				padding: 10px;
+				color: black;    
+				margin: auto;  
+			} 
+			.btn{
+          border: 0;
+          border-radius: 5px;
+          cursor: pointer;
+          background-color: maroon;
+          color: white;
+          font-size: 18px; 
+          margin-left: 10px;
+         }
 		</style>
 	</head>
 	<body>
@@ -34,8 +51,12 @@
 					<div class="col">
 						<div class="card card-body">
 							<form method="get">
-								{{myFilter.form}}
-								<button class="btn btn primary" type="submit"> Search </button>
+								<center>
+								<h6>{{myFilter.form}}</h6>
+								</center>
+
+									<button class="btn btn-danger" type="submit"> Search </button>
+								
 							</form>
 						</div>
 					</div>
@@ -48,11 +69,13 @@
 						<tr>
 							<th>Event Name</th>
 							<th>Date</th>
-							<th>Time</th>
+							<th>Start Time</th>
+							<th>End Time</th>
 							<th>Place</th>
 							<th>Status</th>
 							<th>Update</th>
 							<th>Delete</th>
+							<th>Action</th>
 						</tr>
 
 						{% for i in event %}
@@ -60,11 +83,13 @@
 						<tr>
 							<td>{{i.Eventname}}</td>
 							<td>{{i.date}}</td>
-							<td>{{i.time}}</td>
+							<td>{{i.start_time}}</td>
+							<td>{{i.end_time}}</td>
 							<td>{{i.place}}</td>
 							<td>{{i.status}}</td>
 							<td> <a class = "btn btn-sm btn-danger" href="{% url 'update_event' i.id %}">Update</a></td>
 							<td> <a class = "btn btn-sm btn-danger" href="{% url 'delete_event' i.id %}">Delete</a></td>
+							<td><a class = "btn btn-sm btn-danger" href="{% url 'AdminEventView' i.id %}">View</a></td>
 						</tr>
 						{% endfor %}
 					</table>

@@ -20,31 +20,38 @@
 				<!-- ChartJS  CDN-->
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 
-	<style>
-    	#logo{
+		<style>
+			/*#logo{
 
-    	}
-    	body{
-    		background-color: #ebeff5;
-    	}
-
-    	#job-post{
-    		background-color: #741e1e;
-    	}
-
-    	#partner-company{
-    		background-color: #741e1e;
-    	}
-
-    	#job-seekers{
-    		background-color: #741e1e;
-    	}
-    </style>
+			}*/
+			body{
+				background-color: #ebeff5;
+			}
+			#job-post{
+				background-color: #741e1e;
+			}
+			#partner-company{
+				background-color: #741e1e;
+			}
+			#job-seekers{
+				background-color: #741e1e;
+			}
+			.btn{
+			border: 0;
+			border-radius: 5px;
+			cursor: pointer;
+			background-color: maroon;
+			color: white;
+			font-size: 18px; 
+			}
+			.style1{
+				color: maroon;
+				text-shadow: 2px 1px gold;
+				text-align: center;
+			}
+		</style>
 	</head>
-	<body>
-		
-
-  		
+	<body>  		
 		<br>
 
 		<div class="row">
@@ -61,7 +68,7 @@
 
 		<div class="row">
 			<div class="col-md">
-				<h5>Alumni</h5>
+				<h3 class="style1">Alumni</h3>
 				<hr>
 				<div class="card card-body">
 					<a class="btn btn-danger btn-sm btn-block" href="">Alumni Info</a>
@@ -90,7 +97,7 @@
 			</div>
 		</div>
 		<br>
-		<div class=row>
+<!-- 		<div class=row>
 					<div class="col-md-4">
 				<div class="card card-body">
 					<canvas id="myChart" width="300" height="130"></canvas>
@@ -155,12 +162,12 @@
 						</script>
 
 				</div>
-			</div>
+			</div> -->
 			<div class="col-md">
 				
 				<hr>
 				<div class="card card-body">
-					<a class="btn btn-danger btn-sm btn-block" href="{% url 'companygallery' %}">ALumni Company Info</a>
+					<a class="btn btn-danger btn-sm btn-block" href="{% url 'companygallery' %}">Alumni Company Info</a>
 					<table class="table table-sm">
 						<tr>
 							
@@ -183,14 +190,19 @@
 					</table>
 				</div>
 			</div>
-		</div>
+
+			<div class="col-md">
+				
+				<hr>
+				<div class="card card-body">
+					<a class="btn btn-danger btn-lg btn-block" href="{% url 'countrylist' %}">View Countries Information (Graph)</a>
+					<table class="table table-sm">
+						
+					</table>
+				</div>
+			</div>
 		<br>
 		<br>
-
-
-
-	
-
 
 
 	</body>
